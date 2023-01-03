@@ -1,0 +1,31 @@
+services:
+  db:
+    container_name: postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      PGDATA: /data/postgres # Where to store Data
+    volumes:
+      - db:/data/postgres
+    ports:
+      - "5332:5432"
+    networks:
+      - db
+    restart: unless-stopped
+networks:
+  db:
+    driver: bridge
+volumes:
+  db:
+
+# docker exec -it postgres bash
+# psql -U username
+# \l for showing the list of databases
+# CREATE DATABASE customer
+# \c customer for connecting to customer DataBase
+# \dt show the list of relations(only tables) that belongs to DataBase
+# \d It shows all relations (Including tables and sequence)
+# \d customer to see the description about the customer table
+
+
